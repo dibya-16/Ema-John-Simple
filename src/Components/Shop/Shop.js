@@ -11,7 +11,7 @@ const Shop = () => {
     const [cart,setCart]=useState([]);
     const handleAddProduct = (produt) =>{
           console.log(produt);
-          const newCart=[...cart,produt];//...cart means aager cart gula thakbe then ","prop(which is parameter product.js er button click korle receive kortese) dile porer gulao ashbe
+          const newCart=[...cart,produt];//...cart means aager cart gula thakbe then ","produt(which is parameter product.js er button click korle receive kortese) dile porer gulao ashbe
           setCart(newCart);
           
     }
