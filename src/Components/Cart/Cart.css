@@ -1,0 +1,11 @@
+.cart{
+    text-align: center;
+}
+.reviewButton{
+    background-color: goldenrod;
+    width: 140px;
+    height:30px;
+    border:1px solid gray;
+    border-radius: 3px;
+    cursor:pointer;
+}
