@@ -23,15 +23,18 @@ const Cart = (props) => {
     const tax=total/10;//meaning total er 10%
     
     const grandTotal=(total+shippingCost+tax).toFixed(2);
+    const formatNumber=(num)=>{
+        const precision=num.toFixed(2);//"toFixed(2)" value 2 decimal porjonto rakhe.but er por string hoye jaaay value
+        return Number(precision);//"Number()"string to number ah convert koreh
 
-   
+    }
     return (
         <div>
             <h3>Order Summary:</h3>
             <h4>Items Ordered:{cartAll.length}</h4>
             <h4>Product Price:{total}</h4>
             <h4>Shipping Cost:{shippingCost}</h4>
-            <h4>Tax+Vat:{tax}</h4>
+            <h4>Tax+Vat:{formatNumber(tax)}</h4>
             <h4>Total Price:{grandTotal}</h4>
             
         </div>
