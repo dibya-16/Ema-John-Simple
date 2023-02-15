@@ -3,6 +3,7 @@ import fakeData from "../../fakeData";
 import Cart from '../Cart/Cart';
 import Product from '../Product/Product';
 import "./Shop.css";
+import { addToDatabaseCart } from '../../utilities/databaseManager';
 
 
 const Shop = () => {
@@ -13,6 +14,9 @@ const Shop = () => {
           console.log(produt);
           const newCart=[...cart,produt];//...cart means aager cart gula thakbe then ","produt(which is parameter product.js er button click korle receive kortese) dile porer gulao ashbe
           setCart(newCart);
+          const sameProduct=newCart.filter(pd=>pd.key===produt.key);
+          const count=sameProduct.length;
+          addToDatabaseCart(produt.key,count);
           
     }
     return (
