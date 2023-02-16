@@ -17,7 +17,13 @@ const Product = (props) => {
                 <p><small>by:{seller}</small></p>
                 <p>${price}</p>
                 <p><small>Only {stock} left in stock - order soon</small></p>
-                <button onClick={()=>props.handleAdd(props.product)} className="main-button">Add to Cart</button>
+                {props.showAddToCart === true && <button 
+                    className="main-button" 
+                    onClick={() => props.handleAdd(props.product)}
+                    >Add to Cart
+                      
+                    </button>}
+                
                  
             </div>
         </div>

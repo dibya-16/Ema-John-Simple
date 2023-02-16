@@ -8,7 +8,7 @@ const Cart = (props) => {
     let total=0;
     for(let i=0;i<cartAll.length;i++){
         const productAll=cartAll[i];
-        total=total+productAll.price; 
+        total=total+productAll.price*productAll.quantity; 
     }
     let shippingCost=0;
     if(total>30){
@@ -38,9 +38,9 @@ const Cart = (props) => {
             <h4>Shipping Cost:{shippingCost}</h4>
             <h4>Tax+Vat:{formatNumber(tax)}</h4>
             <h4>Total Price:{grandTotal}</h4>
-            <Link to="/review">
-            <button className="reviewButton">Review Your Order</button>
-            </Link>
+            {
+                props.children
+            }
            
             
         </div>

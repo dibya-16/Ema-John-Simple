@@ -12,6 +12,7 @@ import Header from './Components/Header/Header';
 
 import Shop from './Components/Shop/Shop';
 import Review from './Components/Review/Review';
+import ProductDetail from './Components/ProductDetail/ProductDetail';
 
 
 function App() {
@@ -27,6 +28,10 @@ function App() {
               
              
               </Route>
+              <Route path="/product/:productKey" element= {<ProductDetail/>}>
+                
+               
+                </Route>
               <Route path="/review" element= {<Review/>}>
                 
                
