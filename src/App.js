@@ -13,6 +13,8 @@ import Header from './Components/Header/Header';
 import Shop from './Components/Shop/Shop';
 import Review from './Components/Review/Review';
 import ProductDetail from './Components/ProductDetail/ProductDetail';
+import Login from './Components/Login/Login';
+
 
 
 function App() {
@@ -39,6 +41,9 @@ function App() {
              
               <Route exact path="/" element={<Shop/>}>
                 
+              </Route>
+              <Route path="/login"element={<Login/>}>
+
               </Route>
 
            </Routes>

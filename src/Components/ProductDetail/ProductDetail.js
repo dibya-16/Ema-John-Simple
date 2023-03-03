@@ -6,7 +6,7 @@ import Product from '../Product/Product';
 import { useEffect } from 'react'; */
 
 const ProductDetail = () => {
-    const {productKey} = useParams();
+    const {productKey} = useParams();//here product key name got from app.js file in productDetail url
     /* const [product, setProduct] = useState(null);
     
     useEffect(() =>{

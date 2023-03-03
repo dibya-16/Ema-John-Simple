@@ -20,6 +20,9 @@ const Shop = () => {
             const previousCart =  productKeys.map( existKey => {
                 const product = fakeData.find( pd => pd.key === existKey);
                 product.quantity = savedCart[existKey];
+                //console.log(savedCart);
+                //console.log(existKey,savedCart[existKey]);////console ah jeye eta dekhlei bujha jaabr ..jodi ekhane nah bujhi
+                //console.log(productKeys);
                 return product;
             });
             setCart(previousCart);
@@ -28,7 +31,7 @@ const Shop = () => {
     }, []);
 
     const handleAddProduct = (produt) =>{
-          console.log(produt);
+          //console.log(produt);
           const sameProduct=cart.find(pd=>pd.key===produt.key);
           let count =1;
           let newCart;

@@ -15,7 +15,7 @@ const Review = () => {
         clearLocalShoppingCart();
     }
     const removeItem =(productKey)=>{
-        console.log("removed",productKey);
+        //console.log("removed",productKey);
         const newCart=cart.filter(pd=>pd.key!==productKey);
         setCart(newCart);
         removeFromDatabaseCart(productKey);
@@ -31,6 +31,9 @@ const Review = () => {
             const cartProducts =  productKeys.map( key => {
                 const product = fakeData.find( pd => pd.key === key);
                 product.quantity = savedCart[key];
+                 //console.log(savedCart);
+                //console.log(key,savedCart[key]);
+                //console.log(productKeys);
                 return product;
             });
             setCart(cartProducts);

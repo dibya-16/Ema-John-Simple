@@ -17,12 +17,10 @@ const Product = (props) => {
                 <p><small>by:{seller}</small></p>
                 <p>${price}</p>
                 <p><small>Only {stock} left in stock - order soon</small></p>
-                {props.showAddToCart === true && <button 
+             <button 
                     className="main-button" 
-                    onClick={() => props.handleAdd(props.product)}
-                    >Add to Cart
-                      
-                    </button>}
+                    onClick={() => props.handleAdd(props.product)}>Add to Cart
+                      </button>
                 
                  
             </div>
