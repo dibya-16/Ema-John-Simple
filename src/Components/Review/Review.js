@@ -32,7 +32,7 @@ const Review = () => {
                 const product = fakeData.find( pd => pd.key === key);
                 product.quantity = savedCart[key];
                  //console.log(savedCart);
-                //console.log(key,savedCart[key]);
+                //console.log(key,savedCart[key]);//console ah jeye eta dekhlei bujha jaabr ..jodi ekhane nah bujhi
                 //console.log(productKeys);
                 return product;
             });
