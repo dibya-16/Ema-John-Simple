@@ -5,6 +5,7 @@ import { GoogleAuthProvider } from "firebase/auth";
 import { getAuth, signInWithPopup } from "firebase/auth";
 import { signOut } from "firebase/auth";
 import {createUserWithEmailAndPassword,signInWithEmailAndPassword,  updateProfile } from "firebase/auth";
+import { userContext } from '../../App';
 //import { userContext } from '../App';
 //import { useLocation, useNavigate } from 'react-router-dom';
 
@@ -19,7 +20,8 @@ const Login = () => {
        
     })
 
-    //const [loggedInUser,setLoggedInUser]=useContext(userContext);
+    const [loggedInUser,setLoggedInUser]=useContext(userContext);
+
    // const history = useNavigate();//useHistory()'r jaygay useNavigate() boshbe update react-6 (react router dom ) ah
   //const location = useLocation();
   //const { from } = location.state || { from: { pathname: "/" } };
@@ -136,7 +138,9 @@ const Login = () => {
                newUserInfo.error="";
                newUserInfo.success=true;
                setUser(newUserInfo);
+               setLoggedInUser(newUserInfo);
                console.log("user name info",res.user);
+
             })
             .catch((error) => {
                 const newUserInfo= {...user};

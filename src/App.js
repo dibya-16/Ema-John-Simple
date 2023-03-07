@@ -14,15 +14,19 @@ import Shop from './Components/Shop/Shop';
 import Review from './Components/Review/Review';
 import ProductDetail from './Components/ProductDetail/ProductDetail';
 import Login from './Components/Login/Login';
+import Shipment from './Components/Shipment/Shipment';
+import { createContext, useState } from 'react';
 
-
+export const userContext=createContext();
 
 function App() {
+  const [loggedInUser,setLoggedInUser]=useState({});
  
   return (
-    <div>
+    <userContext.Provider value={[loggedInUser,setLoggedInUser]}>
       
 <Header></Header>
+
         
         <Router>
            <Routes>
@@ -35,6 +39,10 @@ function App() {
                
                 </Route>
               <Route path="/review" element= {<Review/>}>
+                
+               
+                </Route>
+                <Route path="/shipment" element= {<Shipment/>}>
                 
                
                 </Route>
@@ -54,7 +62,7 @@ function App() {
          
         </Router>
     
-    </div>
+    </userContext.Provider>
   );
 }
 
