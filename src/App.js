@@ -16,6 +16,7 @@ import ProductDetail from './Components/ProductDetail/ProductDetail';
 import Login from './Components/Login/Login';
 import Shipment from './Components/Shipment/Shipment';
 import { createContext, useState } from 'react';
+import PrivateRoute from './Components/PrivateRoute/PrivateRoute';
 
 export const userContext=createContext();
 
@@ -25,10 +26,11 @@ function App() {
   return (
     <userContext.Provider value={[loggedInUser,setLoggedInUser]}>
       
-<Header></Header>
+
 
         
         <Router>
+        <Header></Header>
            <Routes>
            <Route path="/shop" element={<Shop/>}>
               
@@ -42,10 +44,11 @@ function App() {
                 
                
                 </Route>
-                <Route path="/shipment" element= {<Shipment/>}>
+                <Route path="/shipment" element={<PrivateRoute><Shipment/></PrivateRoute>}>
                 
-               
                 </Route>
+
+               
              
               <Route exact path="/" element={<Shop/>}>
                 

@@ -6,8 +6,8 @@ import { getAuth, signInWithPopup } from "firebase/auth";
 import { signOut } from "firebase/auth";
 import {createUserWithEmailAndPassword,signInWithEmailAndPassword,  updateProfile } from "firebase/auth";
 import { userContext } from '../../App';
-//import { userContext } from '../App';
-//import { useLocation, useNavigate } from 'react-router-dom';
+
+import { useLocation, useNavigate } from 'react-router-dom';
 
 const Login = () => {
     const [newUser,setNewUser]=useState(false);
@@ -15,6 +15,7 @@ const Login = () => {
         isSignedIn:false,
         name:"",
         email:"",
+        password:""
        
        
        
@@ -22,13 +23,13 @@ const Login = () => {
 
     const [loggedInUser,setLoggedInUser]=useContext(userContext);
 
-   // const history = useNavigate();//useHistory()'r jaygay useNavigate() boshbe update react-6 (react router dom ) ah
-  //const location = useLocation();
-  //const { from } = location.state || { from: { pathname: "/" } };
+   const history = useNavigate();//useHistory()'r jaygay useNavigate() boshbe update react-6 (react router dom ) ah
+   const location = useLocation();
+   const { from } = location.state || { from: { pathname: "/" } };
     const provider = new GoogleAuthProvider();
     
     const handleGoogleSignIn = ()=>{
-        
+       //google at firebase  
         const auth = getAuth(app);
   signInWithPopup(auth, provider)
   .then((result) => {
@@ -106,7 +107,7 @@ const Login = () => {
        
         if(newUser && user.email && user.password){
            
-          
+            //password authentication at firebase
 
             const auth = getAuth(app);
             createUserWithEmailAndPassword(auth, user.email, user.password)
@@ -130,6 +131,8 @@ const Login = () => {
         }
         if(!newUser && user.email && user.password){
            
+            
+            //password authentication at firebase
 
             const auth = getAuth(app);
             signInWithEmailAndPassword(auth, user.email, user.password)
@@ -139,6 +142,7 @@ const Login = () => {
                newUserInfo.success=true;
                setUser(newUserInfo);
                setLoggedInUser(newUserInfo);
+               history.replace(from);
                console.log("user name info",res.user);
 
             })
@@ -155,6 +159,7 @@ const Login = () => {
     }
 
     const updateUserName=(name)=>{
+        //manage users at firebase
         
         const auth = getAuth(app);
         updateProfile(auth.currentUser, {
