@@ -26,6 +26,11 @@ const Login = () => {
    const history = useNavigate();//useHistory()'r jaygay useNavigate() boshbe update react-6 (react router dom ) ah
    const location = useLocation();
    const { from } = location.state || { from: { pathname: "/" } };
+
+     
+     
+
+
     const provider = new GoogleAuthProvider();
     
     const handleGoogleSignIn = ()=>{
@@ -142,7 +147,7 @@ const Login = () => {
                newUserInfo.success=true;
                setUser(newUserInfo);
                setLoggedInUser(newUserInfo);
-               history.replace(from);
+               history(from,{replace:true});
                console.log("user name info",res.user);
 
             })

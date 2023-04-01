@@ -1,11 +1,15 @@
 import React, { useEffect, useState } from 'react';
-import fakeData from '../../fakeData';
+//import fakeData from '../../fakeData';
 import { clearLocalShoppingCart, getDatabaseCart, removeFromDatabaseCart } from '../../utilities/databaseManager';
 import Cart from '../Cart/Cart';
 import ReviewItem from '../ReviewItem/ReviewItem';
 import happyImg from '../../images/giphy.gif';
 
 import { useNavigate } from 'react-router-dom';
+
+
+
+
 
 
 const Review = () => {
@@ -19,7 +23,7 @@ const Review = () => {
     //}
 
     const handleProceedOrder=()=>{
-        history.push("/shipment");
+        history("/shipment");
     }
     const removeItem =(productKey)=>{
         //console.log("removed",productKey);
@@ -34,16 +38,24 @@ const Review = () => {
         //cart
         const savedCart = getDatabaseCart();
         const productKeys = Object.keys(savedCart);
-       
-            const cartProducts =  productKeys.map( key => {
+
+        fetch("http://localhost:5000/productsByKeys",{
+            method:"POST",
+            headers:{"Content-Type":"application/json"},
+            body:JSON.stringify(productKeys)
+        })
+        .then(res => res.json())
+        .then(data =>setCart(data))
+            /*const cartProducts =  productKeys.map( key => {
                 const product = fakeData.find( pd => pd.key === key);
                 product.quantity = savedCart[key];
-                 //console.log(savedCart);
+                //console.log(savedCart);
                 //console.log(key,savedCart[key]);//console ah jeye eta dekhlei bujha jaabr ..jodi ekhane nah bujhi
                 //console.log(productKeys);
                 return product;
             });
             setCart(cartProducts);
+        */
         
         
     }, []);
@@ -80,6 +92,6 @@ const Review = () => {
       
            
     );
-};
+}
 
 export default Review;

@@ -17,11 +17,12 @@ import Login from './Components/Login/Login';
 import Shipment from './Components/Shipment/Shipment';
 import { createContext, useState } from 'react';
 import PrivateRoute from './Components/PrivateRoute/PrivateRoute';
+import Inventory from './Components/Inventory/Inventory';
 
 export const userContext=createContext();
 
 function App() {
-  const [loggedInUser,setLoggedInUser]=useState({});
+  const [loggedInUser,setLoggedInUser]=useState({});//object take
  
   return (
     <userContext.Provider value={[loggedInUser,setLoggedInUser]}>
@@ -44,8 +45,16 @@ function App() {
                 
                
                 </Route>
-                <Route path="/shipment" element={<PrivateRoute><Shipment/></PrivateRoute>}>
+                 {/*<Route path="/shipment" element={<PrivateRoute><Shipment/></PrivateRoute>}>
                 
+                  </Route> */}
+                
+                
+                <Route path="/shipment" element={<Shipment/>}>
+                
+                </Route>
+                <Route path="/manage" element={<Inventory/>}>
+
                 </Route>
 
                
