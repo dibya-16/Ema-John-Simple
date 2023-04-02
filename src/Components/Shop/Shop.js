@@ -77,6 +77,9 @@ const Shop = () => {
     return (
         <div className='twin-container'>
             <div className="products-container">
+                   {
+                    products.length===0 &&<p>loading...</p>//loading er jaygay material ui theke build in spinner o use korte partam
+                   }
                 
                     {
                        products.map(pd=> <Product handleAdd={handleAddProduct} product={pd}></Product>)
