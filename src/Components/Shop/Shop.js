@@ -11,12 +11,14 @@ const Shop = () => {
     //const [products,setProducts]= useState(first10);
     const [products,setProducts]= useState([]);
     const [cart,setCart]=useState([]);
+    const [search,setSearch]=useState('');
     useEffect(()=>{
-        fetch("http://localhost:5000/products")
+         //fetch("http://localhost:5000/products")
+        fetch("http://localhost:5000/products?search="+search)
         .then(res=>res.json())
         .then(data=>setProducts(data))
 
-    },[])
+    },[search])
 
     useEffect(()=>{
         //cart
@@ -74,9 +76,14 @@ const Shop = () => {
           addToDatabaseCart(produt.key,count);
           
     }
+
+    const handleSearch=(event)=>{
+        setSearch(event.target.value);
+    }
     return (
         <div className='twin-container'>
             <div className="products-container">
+                   <input type="text" onBlur={handleSearch} className="products-search" placeHolder="Search Products Here"/>
                    {
                     products.length===0 &&<p>loading...</p>//loading er jaygay material ui theke build in spinner o use korte partam
                    }

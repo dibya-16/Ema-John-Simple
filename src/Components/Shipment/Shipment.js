@@ -3,6 +3,7 @@ import {useForm} from "react-hook-form";
 import { userContext } from '../../App';
 import "./Shipment.css";
 import { clearLocalShoppingCart, getDatabaseCart } from '../../utilities/databaseManager';
+import PaymentProcess from '../PaymentProcess/PaymentProcess';
 
 const Shipment = () => {
     const { register, handleSubmit, watch, formState: { errors } } = useForm();
@@ -27,10 +28,13 @@ const Shipment = () => {
 
         
     }
-    console.log(watch("example")); // watch input value by passing the name of it
+   // console.log(watch("example")); // watch input value by passing the name of it
   
     return (
-      /* "handleSubmit" will validate your inputs before invoking "onSubmit" */
+       //div.row>div.col-md-6*2
+       <div className='twin-container'>
+        <div className="products-container">
+        {/*handleSubmit" will validate your inputs before invoking "onSubmit"*/}
       <form className="ship-form" onSubmit={handleSubmit(onSubmit)}>
         {/* register your input into the hook by invoking the "register" function */}
       
@@ -45,6 +49,14 @@ const Shipment = () => {
         
         <input type="submit" />
       </form>
+        </div>
+        <div className="cart-container">
+          <h2>Please pay for me</h2>
+         {/* <PaymentProcess></PaymentProcess>*/}
+                 </div>
+       </div>
+
+     
     );
 };
 
