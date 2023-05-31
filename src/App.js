@@ -19,6 +19,9 @@ import { createContext, useState } from 'react';
 import PrivateRoute from './Components/PrivateRoute/PrivateRoute';
 import Inventory from './Components/Inventory/Inventory';
 
+
+//if you want to import something <(foldername) then tab or enter
+
 export const userContext=createContext();
 
 function App() {
